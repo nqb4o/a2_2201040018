@@ -1,4 +1,4 @@
-package utils;
+package a2_2201040018.utils;
 /**
  * A run-time exception that is thrown by a method that could not
  * perform its operation due to input data errors.

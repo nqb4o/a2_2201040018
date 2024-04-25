@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.Vector;
 
-import utils.NotPossibleException;
+import a2_2201040018.utils.NotPossibleException;
 /**
  * A program that captures data about PC objects and displays
  * a report about them on the console.
@@ -20,6 +20,14 @@ public class PCProg {
     public PCProg() {
         objs = new Set<>();
     }
+
+    /**
+     * If <tt>objs</tt> is not empty, displays a text-based tabular
+     * report on <tt>objs</tt> to the standard console.
+     * Displays nothing if <tt>objs</tt> is empty.
+     *
+     * @return this report if <tt>objs</tt> is not empty or <tt>null</tt> otherwise.
+     */
 
     public void createObjects() {
         Scanner sc = new Scanner(System.in);
@@ -52,14 +60,6 @@ public class PCProg {
     public Vector<PC> getObjects() {
         return objs.getElements();
     }
-
-    /**
-     * If <tt>objs</tt> is not empty, displays a text-based tabular
-     * report on <tt>objs</tt> to the standard console.
-     * Displays nothing if <tt>objs</tt> is empty.
-     *
-     * @return this report if <tt>objs</tt> is not empty or <tt>null</tt> otherwise.
-     */
     public String displayReport() {
         if (!objs.isEmpty()) {
             Vector<PC> pcs = objs.getElements();

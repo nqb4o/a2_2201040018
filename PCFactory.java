@@ -1,13 +1,13 @@
 package a2_2201040018;
 
-import java.util.Vector;
+//import java.util.Vector;
 public class PCFactory {
     private static PCFactory instance;
-    private Vector<PC> pcVector;
+//    private Vector<PC> pcVector;
 
-    private PCFactory() {
-        pcVector = new Vector<>();
-    }
+//    private PCFactory() {
+//        pcVector = new Vector<>();
+//    }
 
     public static PCFactory getInstance() {
         if (instance == null) {
@@ -17,12 +17,13 @@ public class PCFactory {
     }
 
     public PC createPC(String model, int year, String manufacturer, Set<String> comps) {
-        PC pc = new PC(model, year, manufacturer, comps);
-        pcVector.add(pc);
-        return pc;
+//        PC pc = new PC(model, year, manufacturer, comps);
+//        pcVector.add(pc);
+//        return pc;
+        return new PC(model, year, manufacturer, comps);
     }
 
-    public Vector<PC> getPCs() {
-        return pcVector;
-    }
+//    public Vector<PC> getPCs() {
+//        return pcVector;
+//    }
 }

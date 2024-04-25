@@ -1,40 +1,50 @@
 package a2_2201040018;
 
+import a2_2201040018.utils.NotPossibleException;
+
 public class PC {
     private String model;
-    private int year;
-    private String manufacturer;
+    private final int year;
+    private final String manufacturer;
     private Set<String> comps;
 
     public PC(String model, int year, String manufacturer, Set<String> comps) {
         if (isValidModel(model))
             this.model = model;
         else
-            throw new IllegalArgumentException("Invalid model");
+            throw new NotPossibleException("Invalid model");
 
         if (isValidYear(year))
             this.year = year;
         else
-            throw new IllegalArgumentException("Invalid year");
+            throw new NotPossibleException("Invalid year");
 
         if (isValidManufacturer(manufacturer))
             this.manufacturer = manufacturer;
         else
-            throw new IllegalArgumentException("Invalid manufacturer");
+            throw new NotPossibleException("Invalid manufacturer");
 
-        this.comps = comps;
+        if (isValidComps(comps))
+            this.comps = comps;
+        else
+            throw new NotPossibleException("Invalid components");
+
     }
 
-    public boolean isValidModel(String model) {
-        return model != null && model.length() <= 20;
+    private boolean isValidModel(String model) {
+        return model != null && !model.isEmpty() && model.length() <= 20;
     }
 
-    public boolean isValidYear(int year) {
+    private boolean isValidYear(int year) {
         return year >= 1984;
     }
 
-    public boolean isValidManufacturer(String manufacturer) {
-        return manufacturer != null && manufacturer.length() <= 15;
+    private boolean isValidManufacturer(String manufacturer) {
+        return manufacturer != null && !manufacturer.isEmpty() && manufacturer.length() <= 15;
+    }
+
+    private boolean isValidComps(Set<String> comps) {
+        return !comps.isEmpty();
     }
 
     // Getters and setters
@@ -42,10 +52,14 @@ public class PC {
         if (isValidModel(model))
             this.model = model;
         else
-            throw new IllegalArgumentException("Invalid model");
+            throw new NotPossibleException("Invalid model");
     }
     public void setComps(Set<String> comps) {
-        this.comps = comps;
+        if (isValidComps(comps))
+            this.comps = comps;
+        else
+            throw new NotPossibleException("Invalid components");
+
     }
 
     public String getModel() {
